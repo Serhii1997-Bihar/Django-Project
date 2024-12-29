@@ -75,14 +75,9 @@ def admin_pg(request):
     context = {'admins': admins}
     return render(request, 'shop_templates/administration.html', context)
 
-class products_api(viewsets.ModelViewSet):
-    queryset = ProductsModel.objects.all()
-    serializer_class = ProductsSerializer
-    permission_classes = [IsAuthenticated]
-
-
-
-
+class admins_api(viewsets.ModelViewSet):
+    queryset = AdministrationModel.objects.all()
+    serializer_class = AdminSerializer
 
 
 """class admins_api(APIView):

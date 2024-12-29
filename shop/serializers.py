@@ -7,8 +7,10 @@ class ProductsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-
-
+class AdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AdministrationModel
+        fields = '__all__'
 
 
 """class AdminsSerializer(serializers.ModelSerializer):
