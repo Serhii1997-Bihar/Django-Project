@@ -17,7 +17,7 @@ class UserLoginForm(forms.Form):
 class UserEditForm(forms.ModelForm):
     first_name = forms.CharField(max_length=150)
     last_name = forms.CharField(max_length=150)
-    email = forms.EmailField(max_length=150)  # Змінено на EmailField
+    email = forms.EmailField(max_length=150)
 
     class Meta:
         model = User

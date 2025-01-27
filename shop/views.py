@@ -59,7 +59,7 @@ def brand_pg(request, id):
     context = {
         'brand': brand,
         'brand_id': id,
-        'query': query  # Додаємо query до контексту
+        'query': query
     }
     return render(request, 'shop_templates/brand.html', context)
 

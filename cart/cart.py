@@ -22,13 +22,10 @@ class Cart(object):
         self.save()
 
     def save(self):
-        # Обновление сессии cart
         self.session[settings.CART_SESSION_ID] = self.cart
-        # Отметить сеанс как "измененный", чтобы убедиться, что он сохранен
         self.session.modified = True
 
     def remove(self, product):
-        # Удаление товара из корзины.
         product_id = str(product.id)
         if product_id in self.cart:
             del self.cart[product_id]
@@ -43,23 +40,19 @@ class Cart(object):
             cart_item['price'] = Decimal(cart_item['price'])
             cart_item['total_price'] = cart_item['price'] * cart_item['quantity']
 
-            # Отримайте назву розміру
             if cart_item['size']:
                 size = SizeModel.objects.get(id=cart_item['size'])
-                cart_item['size'] = size.size  # Зберегти назву розміру
+                cart_item['size'] = size.size
 
             yield cart_item
 
     def __len__(self):
-        # Подсчет всех товаров в корзине.
         return sum(item['quantity'] for item in self.cart.values())
 
 
     def get_total_price(self):
-        # Подсчет стоимости товаров в корзине.
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
     def clear(self):
-        # удаление корзины из сессии
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True

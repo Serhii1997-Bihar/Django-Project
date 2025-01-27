@@ -107,14 +107,12 @@ def UserEdit(request):
             user_form.save()
             profile_form.save()
 
-            # Обробка зображень
             for image in request.FILES.getlist('images'):
-                ImagesUser.objects.create(gallery=gallery, images=image)  # Створюємо новий запис
+                ImagesUser.objects.create(gallery=gallery, images=image)
 
-            # Обробка відео
             if 'videos' in request.FILES:
                 for video_file in request.FILES.getlist('videos'):
-                    VideosUser.objects.create(gallery=gallery, videos=video_file)  # Створюємо новий запис
+                    VideosUser.objects.create(gallery=gallery, videos=video_file)
 
             return redirect('account', user.id)
     else:
@@ -136,8 +134,8 @@ def UserPerson(request, id):
     profile = get_object_or_404(ProfileUser, user=user)
     gallery, created = GalleryUser.objects.get_or_create(user=user)
 
-    images = ImagesUser.objects.filter(gallery=gallery).order_by('?') # Отримуємо всі зображення для галереї
-    vids = VideosUser.objects.filter(gallery=gallery)  # Отримуємо всі відео для галереї
+    images = ImagesUser.objects.filter(gallery=gallery).order_by('?')
+    vids = VideosUser.objects.filter(gallery=gallery)
     main_videos = vids[:5]
 
     paginator = Paginator(vids, 5)

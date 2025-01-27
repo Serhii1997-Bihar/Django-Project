@@ -6,6 +6,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('detail/', cart_detail, name='cart'),
     path('add/<int:id>/', cart_add, name='cart_add'),
-    path('delete_cart/<int:id>/', cart_remove, name='cart_remove'),  # Додано 'cart/' перед 'delete'
-    path('order/', order, name='order'),  # Рекомендується також додати префікс для 'order'
+    path('delete_cart/<int:id>/', cart_remove, name='cart_remove'),
+    path('order/', order, name='order'),
 ]

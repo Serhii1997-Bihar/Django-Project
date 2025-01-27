@@ -45,7 +45,7 @@ def order(request):
         order = ClientData.objects.create(name=name, address=address, phone=phone, mail=mail, comment=comment)
         for item in cart:
             OrderItem.objects.create(order=order, product=item['product'], quantity=item['quantity'],
-                                     size=item['size'])  # Видалено 'comment'
+                                     size=item['size'])
 
         order.total_price = cart.get_total_price()
         order.save()
