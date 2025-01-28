@@ -79,29 +79,3 @@ class admins_api(viewsets.ModelViewSet):
     queryset = AdministrationModel.objects.all()
     serializer_class = AdminSerializer
 
-
-"""class admins_api(APIView):
-    def get(self, request):
-        admins = AdministrationModel.objects.all()
-        serializer = AdminsSerializer(admins, many=True)
-        return Response({'posts': serializer.data})
-
-    def post(self, request):
-        serializer = AdminsSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response({'data': serializer.data})
-
-    def put(self, request, *args, **kwargs):
-        id = kwargs.get('id', None)
-        if not id:
-            return Response({'error': 'Method put not allowed'})
-        try:
-            instance = AdministrationModel(id=id)
-        except:
-            return Response({'error': 'Object does not exist'})
-
-        serializer = AdminsSerializer(data=request.data, instance=instance)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response({'post': serializer.data})"""

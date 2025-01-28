@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-ROOT_URLCONF = 'dried_fruits_shop.urls'
+ROOT_URLCONF = 'main_app.urls'
 
 TEMPLATES = [
     {
@@ -66,7 +66,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'dried_fruits_shop.wsgi.application'
+WSGI_APPLICATION = 'main_app.wsgi.application'
 
 DATABASES = {
     'default': {
